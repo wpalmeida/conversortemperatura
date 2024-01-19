@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: conversor-temperatura-deployment
 spec:
-  replicas: 3  # ajuste conforme necessário
+  replicas: 1  # ajuste conforme necessário
   selector:
     matchLabels:
       app: conversor-temperatura
