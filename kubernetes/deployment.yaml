@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: conversor-temperatura-deployment
+spec:
+  replicas: 3  # ajuste conforme necessário
+  selector:
+    matchLabels:
+      app: conversor-temperatura
+  template:
+    metadata:
+      labels:
+        app: conversor-temperatura
+    spec:
+      containers:
+        - name: conversor-temperatura
+          image: wpalmeida/conversor-temperatura-app:latest
+          ports:
+            - containerPort: 5000
+          imagePullPolicy: Always

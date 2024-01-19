@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: conversor-temperatura-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    cert-manager.io/cluster-issuer: "letsencrypt"
+spec:
+  tls:
+  - hosts:
+    - conversor-temperatura.guiadodevops.com.br
+    secretName: conversor-temperatura-tls
+  rules:
+    - host: conversor-temperatura.guiadodevops.com.br # Altere para o seu domínio
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: conversor-temperatura-service
+                port:
+                  number: 80
