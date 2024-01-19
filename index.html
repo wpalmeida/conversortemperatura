@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+</head>
+<body>
+    <h1>Conversor de Temperatura</h1>
+    <form method="post">
+        <label for="escolha">Escolha a conversão:</label>
+        <select name="escolha" id="escolha">
+            <option value="celsius_para_fahrenheit">Celsius para Fahrenheit</option>
+            <option value="fahrenheit_para_celsius">Fahrenheit para Celsius</option>
+        </select>
+        <br>
+        <label for="temperatura">Digite a temperatura:</label>
+        <input type="text" name="temperatura" required>
+        <br>
+        <button type="submit">Converter</button>
+    </form>
+
+    {% if resultado is not none %}
+    <p>{{ temperatura }} graus {{ unidade_origem }} equivalem a {{ resultado|round(2) }} graus {{ unidade_destino }}.</p>
+    {% endif %}
+</body>
+</html>
