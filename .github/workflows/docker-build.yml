@@ -18,18 +18,13 @@ jobs:
 
     - name: Build Docker Image
       run: |
-        docker build -t wpalmeida/conversor-temperatura-app:{{ github.sha }} .
-      # working-directory: /currencyconverter
-        # docker build -t wpalmeida/conversor-temperatura-app:latest .
+        docker build -t wpalmeida/conversor-temperatura-app:latest .
+
     - name: Login to Docker Hub
       run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
-    # - name: Push Docker Image
-    #   run: docker push wpalmeida/conversor-temperatura-app:latest
-    #   # working-directory: /currencyconverter
-
     - name: Push Docker Image
-      run: docker push wpalmeida/conversor-temperatura-app:{{ github.sha }}
+      run: docker push wpalmeida/conversor-temperatura-app:latest
 
   update-k8s-deployment:
     runs-on: ubuntu-latest
@@ -40,7 +35,7 @@ jobs:
 
     - name: Update Kubernetes Deployment
       run: |
-        sed -i "s|image: wpalmeida/conversor-temperatura-app:.*|image: wpalmeida/conversor-temperatura-app:{{ github.sha }}|" kubernetes/deployment.yaml
+        sed -i "s|image: wpalmeida/conversor-temperatura-app:.*|image: wpalmeida/conversor-temperatura-app:latest|" kubernetes/deployment.yaml
 
     - name: Commit and Push Changes
       run: |
