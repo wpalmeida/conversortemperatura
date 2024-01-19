@@ -11,6 +11,8 @@ def fahrenheit_para_celsius(fahrenheit):
 @app.route('/', methods=['GET', 'POST'])
 def index():
     resultado = None
+    unidade_origem = None
+    unidade_destino = None
 
     if request.method == 'POST':
         escolha = request.form['escolha']
