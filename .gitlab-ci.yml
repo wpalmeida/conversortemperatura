@@ -1,0 +1,15 @@
+stages:
+  - build
+
+variables:
+  DOCKERHUB_USERNAME: $CI_REGISTRY_USER
+  DOCKERHUB_TOKEN: $CI_JOB_TOKEN
+
+before_script:
+  - docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_TOKEN $CI_REGISTRY
+
+build:
+  stage: build
+  script:
+    - docker build -t wpalmeida/conversor-temperatura-app:latest .
+    - docker push wpalmeida/conversor-temperatura-app:latest
