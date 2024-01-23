@@ -5,9 +5,11 @@ pipeline {
     //     label 'automation'
     // }
 
-    agent {
-        dockerContainer { image 'node:20.11.0-alpine3.19' }
-    }
+    // agent {
+    //     dockerContainer { image 'node:20.11.0-alpine3.19' }
+    // }
+
+    agent kubernetes
 
     environment {
         // Set Docker Hub credentials ID
