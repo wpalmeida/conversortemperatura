@@ -6,7 +6,7 @@ pipeline {
     // }
 
     agent {
-        docker { image 'node:20.11.0-alpine3.19' }
+        dockerContainer { image 'node:20.11.0-alpine3.19' }
     }
 
     environment {
