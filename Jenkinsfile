@@ -1,6 +1,10 @@
 pipeline {
-    agent any
+    // agent any
  
+     agent {
+        label 'automation'
+    }
+
     environment {
         // Set Docker Hub credentials ID
         DOCKER_HUB_CREDENTIALS = '5c392039-f8d7-4635-ad5a-e53f7de140f2'
