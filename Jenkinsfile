@@ -9,7 +9,11 @@ pipeline {
     //     dockerContainer { image 'node:20.11.0-alpine3.19' }
     // }
 
-    agent mestre
+    agent {
+        kubernetes {
+            label 'default'
+        }
+    }
 
     environment {
         // Set Docker Hub credentials ID
